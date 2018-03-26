@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Meraki Kitchen | test website</title>
+    <link rel="stylesheet" href="./css/style.min.css" type="text/css">
+    <script src="./js/jquery.js" type="text/javascript"></script>
+
+    <script src="./js/animate.js" type="text/javascript"></script>
+  </head>
+  <body id="menu">
+    <header>
+      <nav>
+        <ul>
+          <li><a href="">about</a> </li>
+          <li><a href="#">blog</a> </li>
+          <li><a href="index.html">home</a> </li>
+
+          <li><a href="#">business</a> </li>
+          <!-- <span><a href="#"><img src="" alt=""> </a> </span> -->
+          <li><a href="menu.html">menu</a> </li>
+          <li><a href="#">log in / sign up </a> </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="menu">
+      <div class="dates">
+        <a href="#monSection" class="changing" id="mon" id="monSection">
+          <span class="date" >
+          mon <br>
+          19 mar
+          </span>
+        </a>
+        <a href="#tueSection"  id="tue" id="tueSection">
+          <span class="date"  >
+        tue <br>
+        20 mar
+        </span>
+        </a>
+        <a href="#wedSection"   id="wed" id="wedSection">
+          <span class="date">
+        wed <br>
+        21 mar
+          </span>
+        </a>
+        <a href="#thurSection"   id="thur" id="thurSection">
+          <span class="date"  >
+          thur <br>
+          22 mar
+          </span>
+        </a>
+        <a href="#friSection"  id="fri" id="friSection" >
+          <span class="date" >
+        fri <br>
+          23 mar
+          </span>
+        </a>
+
+      </div>
+
+      <div id="monSection" class="meal"  >
+        <img src="./images/meal.jpg" alt="" width="300px">
+        <div class="meal-info">
+          <h3>shawarma bowl </h3>
+          <p>multigrain-rice</p>
+          <p>grilled shawarma chicken, fresh tomatoes & cucumber, chickpeas, and fresh herbs.</p>
+          <p>+ jalapeno cream dressing </p>
+          <p id="price">rm 18</p>
+          <span id="order"><button name="button"><a href="#">one for me</a></button></span>
+        </div>
+      </div>
+      <div id="tueSection" class="meal" >
+        <img src="./images/meal.jpg" alt="" width="400px">
+        <div class="meal-info">
+          <h3>pineapple sriracha bowl</h3>
+          <p>multigrain-rice</p>
+          <p>roasted pineapple sriracha chicken, roasted carrots, peppers, onions, and broccoli topped with parsley.</p>
+          <p>+ pineapple sriracha dressing</p>
+          <p id="price">rm 18</p>
+          <span id="order"><button name="button"><a href="#">one for me</a></button></span>
+        </div>
+
+      </div>
+      <div id="wedSection" class="meal" >
+        <img src="./images/meal.jpg" alt="" width="400px">
+        <div class="meal-info">
+          <h3>WEDNESDAY pineapple sriracha bowl</h3>
+          <p>multigrain-rice</p>
+          <p>roasted pineapple sriracha chicken, roasted carrots, peppers, onions, and broccoli topped with parsley.</p>
+          <p>+ pineapple sriracha dressing</p>
+          <p id="price">rm 18</p>
+          <span id="order"><button name="button"><a href="#">one for me</a></button></span>
+        </div>
+      </div>
+      <div id="thurSection" class="meal" >
+        <img src="./images/meal.jpg" alt="" width="400px">
+        <div class="meal-info">
+          <h3>THURSDAY pineapple sriracha bowl</h3>
+          <p>multigrain-rice</p>
+          <p>roasted pineapple sriracha chicken, roasted carrots, peppers, onions, and broccoli topped with parsley.</p>
+          <p>+ pineapple sriracha dressing</p>
+          <p id="price">rm 18</p>
+          <span id="order"><button name="button"><a href="#">one for me</a></button></span>
+        </div>
+      </div>
+      <div id="friSection" class="meal" >
+        <img src="./images/meal.jpg" alt="" width="400px">
+        <div class="meal-info">
+          <h3>FRIDAY pineapple sriracha bowl</h3>
+          <p>multigrain-rice</p>
+          <p>roasted pineapple sriracha chicken, roasted carrots, peppers, onions, and broccoli topped with parsley.</p>
+          <p>+ pineapple sriracha dressing</p>
+          <p id="price">rm 18</p>
+          <span id="order"><button name="button"><a href="#">one for me</a></button></span>
+        </div>
+      </div>
+    </div>
+      <div class="sides">
+        <div class="side">
+          <img src="./images/drinks.jpeg" alt="">
+          drinks
+        </div>
+        <div class="side">
+          <img src="./images/fingerfood.jpeg" alt="">
+          finger food
+        </div>
+        <div class="side">
+          <img src="./images/icecream.jpeg" alt="">
+          ice cream
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+$(document).on("scroll", onScroll);
+
+//smoothscroll
+$('a[href^="#"]').on('click', function (e) {
+    e.preventDefault();
+    $(document).off("scroll");
+
+    $('a').each(function () {
+        $(this).removeClass('changing');
+    })
+    $(this).addClass('changing');
+
+    var target = this.hash,
+        menu = target;
+    $target = $(target);
+    $('html, body').stop().animate({
+        'scrollTop': $target.offset().top+2
+    }, 1000, 'swing', function () {
+        window.location.hash = target;
+        $(document).on("scroll", onScroll);
+    });
+});
+});
+
+function onScroll(event){
+var scrollPos = $(document).scrollTop();
+$('.dates a').each(function () {
+    var currLink = $(this);
+    var refElement = $(currLink.attr("href"));
+    if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+        $('.dates a').removeClass("changing");
+        currLink.addClass("changing");
+    }
+    else{
+        currLink.removeClass("changing");
+    }
+});
+}
+
+
+    </script>
+  </body>
+</html>
